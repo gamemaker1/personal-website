@@ -33,6 +33,25 @@ body {
   font-size: 16px;
 }
 
+.about {
+  max-width: 50%;
+}
+
+.about > p > em {
+  color: var(--bold-yellow);
+  text-decoration: underline;
+}
+
+.about > p > a {
+  color: var(--cyan);
+  text-decoration: underline dotted;
+}
+
+.whale {
+  width: 32px; height: 32px;
+  vertical-align: middle;
+}
+
 .picture {
   width: 200px; height: 200px;
   min-width: 200px;
@@ -52,6 +71,30 @@ body {
   filter: grayscale(0%);
 }
 
+@media only screen and (max-width: 720px) {
+  .welcome {
+    flex-direction: column;
+    justify-content: center;
+    margin: 4px;
+    font-size: 14px;
+  }
+
+  .about {
+    max-width: 100%;
+  }
+
+  .picture {
+    margin: 0 auto;
+  }
+}
+
+.prompt {
+  background: var(--background);
+  color: var(--foreground);
+  outline: none;
+  border: 0;
+}
+
 .active {
   font-weight: 600;
 }
@@ -62,11 +105,4 @@ body {
 
 .system {
   color: var(--green);
-}
-
-.prompt {
-  background: var(--background);
-  color: var(--foreground);
-  outline: none;
-  border: 0;
 }
