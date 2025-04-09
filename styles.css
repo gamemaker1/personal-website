@@ -32,13 +32,14 @@ body {
   display: flex;
   gap: 16px;
   font-size: 16px;
+  margin-top: 42px;
 }
 
 .about {
   max-width: 50%;
 }
 
-.about > p > em {
+.about > p > em > a {
   color: var(--bold-yellow);
   text-decoration: underline;
 }
@@ -51,6 +52,12 @@ body {
 .whale {
   width: 32px; height: 32px;
   vertical-align: middle;
+  transition: 1s;
+}
+
+.whale:hover {
+  transform: rotate(360deg);
+  transition: transform .7s ease-in-out;
 }
 
 .picture {
@@ -98,6 +105,7 @@ body {
 
 .active {
   font-weight: 600;
+  margin-bottom: 8px;
 }
 
 .user {

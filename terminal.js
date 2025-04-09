@@ -30,6 +30,7 @@ const handle = (event) => {
   }
 
   // otherwise, if enter was pressed, execute the command and get the html output
+  if (!event.target.value) return
   const output = document.createElement('p')
   output.innerHTML = execute(event.target.value)
 
@@ -49,8 +50,12 @@ const handle = (event) => {
   container.insertBefore(current, prompt)
   container.insertBefore(output, prompt)
 
-  // clear out the command in the latest prompt.
+  // clear out the command in the latest prompt and scroll to the bottom.
   prompt.querySelector('input').value = ''
+  if (
+    prompt.getBoundingClientRect().bottom > window.innerHeight ||
+    prompt.getBoundingClientRect().top < 0
+  ) prompt.scrollIntoView({ behavior: 'smooth' })
 }
 
 // add an event listener to handle user input in the prompt.
