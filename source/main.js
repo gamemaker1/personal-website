@@ -1,13 +1,10 @@
-// each key is the command the user must type to run the function in the value.
-const commands = {
-  help: () => 'the following are valid commands: ' + Object.keys(commands).join(', '),
-}
+import * as commands from './commands.js'
 
 // execute the command if it is valid, otherwise print an error.
-const execute = (command) =>
+export const execute = (command) =>
   commands[command]?.() ?? `could not execute ${command}, type 'help' to see a list of valid commands`
 
-const handle = (event) => {
+export const handle = (event) => {
   // only process the command once the enter key has been pressed.
   if (event.keyCode != 13) {
     // if it is not an enter key, perform syntax highlighting.
@@ -31,8 +28,9 @@ const handle = (event) => {
 
   // otherwise, if enter was pressed, execute the command and get the html output
   if (!event.target.value) return
-  const output = document.createElement('p')
+  const output = document.createElement('div')
   output.innerHTML = execute(event.target.value)
+  output.style.textIndent = '0.5rem'
 
   // get references to the container and the current prompt. if they do not exist,
   // something is seriously wrong, so reload the page.
@@ -58,6 +56,55 @@ const handle = (event) => {
   ) prompt.scrollIntoView({ behavior: 'smooth' })
 }
 
+// handle keyboard shortcuts for the page.
+document.addEventListener('keydown', (event) => {
+  const prompt = document.querySelector('.latest > input')
+  const history = 
+    [...document.querySelectorAll('.container > p:not(.latest) > input')]
+
+  // ctrl+shift+l should clear all previous commands.
+  if (event.ctrlKey && event.shiftKey && event.key == 'L')
+    [...document.querySelectorAll('.container > *:not(.latest)')]
+      .forEach((command) => command.remove())
+
+  // the up and down arrows should move through the history of commands.
+  if (event.key == 'ArrowUp' || event.key == 'ArrowDown') {
+    // don't let these keys move the cursor around.
+    event.preventDefault()
+
+    // instead, figure out the current position we are at in history.
+    let i = parseInt(prompt.dataset.history)
+    prompt.dataset.history = event.key == 'ArrowUp'
+      ? ((isNaN(i) || i <= 0) ? history.length : i) - 1 // arrow up
+      : (isNaN(i) || i >= history.length) ? 0 : i + 1 // arrow down
+
+    // and then set the prompt to exactly the same command.
+    const previous = history[prompt.dataset.history]
+    if (previous) {
+      prompt.value = previous.value
+
+      // copy over the syntax highlighting too.
+      prompt.setAttribute(
+        'style',
+        previous.getAttribute('style')
+      )
+    }
+  }
+
+  // make sure the input is always focused.
+  document.querySelector('.latest > input')?.focus()
+})
 // add an event listener to handle user input in the prompt.
 document.querySelector('.latest > .prompt')
         .addEventListener('keypress', handle)
+
+// allow filling the prompt with a command for the user.
+window.prompt = (command) => {
+  // fill in the command, and autofocus the prompt so they can hit enter.
+  const prompt = document.querySelector('.latest > input')
+  prompt.value = command; prompt.focus()
+
+  // this has to be correct syntax, since its being auto-filled, so set the
+  // syntax highlighting color to blue.
+  prompt.setAttribute('style', 'color: var(--blue)')
+}
