@@ -37,7 +37,8 @@ export const about = () => `
   <p>
     i was born in austin, texas in june 2006. i moved to india when i was three
     months old, so i don't really have pictures of my birthplace. i live in pune,
-    maharashtra - so here are some pictures from there instead!
+    maharashtra - so instead, here are some pictures from pune that i've taken!
+    <em><small>(click on the pictures to view them in fullscreen mode)</small></em>
   </p>
 
   <div class="views">
@@ -47,22 +48,22 @@ export const about = () => `
     />
     <p class="caption">
       clockwise from the top: a riverside sunset, dusk on a
-      lonely bridge, and the view from a shatabdi window
+      lonely bridge, and the view from a shatabdi window.
     </p>
     <img
       src="assets/media/bridge-dusk.jpg" alt="dusk on a lonely bridge"
       onclick="fullscreen(event)"
     />
     <img
-      src="assets/media/shatabdi-window.jpg" alt="the view from a shatabdi window."
+      src="assets/media/shatabdi-window.jpg" alt="the view from a shatabdi window"
       onclick="fullscreen(event)"
     />
   </div>
 
   <p>
-    i love programming small, clean and functional, sometimes unnecessary things.
-    i love reading books, documentation of some random cool package i found, and
-    old comic books like tintin. my favourite quote is the following -
+    i love programming small, clean, functional (and sometimes unnecessary) things.
+    i love reading books, documentation of random cool packages i come across, and
+    old comic books like tintin and asterix. my favourite quote is the following -
   </p>
 
   <blockquote>
@@ -116,10 +117,12 @@ export const skills = () => `
         <li>git</li>
         <li>ssh</li>
         <li>docker</li>
+        <li>caddy/nginx</li>
         <li>bash and co(reutils)</li>
         <li>xan</li>
         <li>curl/httpie/oha</li>
         <li>github/gitlab ci</li>
+        <li>jupyter notebooks</li>
       </ul>
     </div>
 
@@ -140,7 +143,8 @@ export const skills = () => `
         <li>express rate limit</li>
         <li>refined github</li>
         <li>serve</li>
-        <li>fpm</li>
+        <li>sunbird rc</li>
+        <li>beckn</li>
         <li>android (aosp/lineage os)</li>
       </ul>
     </div>
