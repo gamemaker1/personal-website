@@ -126,6 +126,11 @@ window.fullscreen = (event) => {
   overlay.appendChild(caption)
   overlay.appendChild(image)
   document.body.appendChild(overlay)
+
+  overlay.addEventListener('click', () => {
+    overlay.remove()
+    overlay.removeEventListener('click', this)
+  })
   document.addEventListener('keydown', (event) => {
     if (event.key == 'Escape') {
       overlay.remove()
