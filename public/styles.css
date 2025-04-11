@@ -229,6 +229,12 @@ blockquote {
   text-align: left;
 }
 
+@media only screen and (max-width: 720px) {
+  .lists {
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+  }
+}
+
 .lists > div > strong {
   padding-left: 8px;
 }
