@@ -54,7 +54,7 @@ export const about = () => `
       onclick="fullscreen(event)"
     />
     <img
-      src="assets/media/shatabdi-window.jpg" alt="the view from a shatabdi window"
+      src="assets/media/shatabdi-window.jpg" alt="the view from a shatabdi window."
       onclick="fullscreen(event)"
     />
   </div>
@@ -72,7 +72,80 @@ export const about = () => `
   if you know which movie this is from, run the name as a command :)
 `
 
-export const skills = () => ``
+export const skills = () => `
+  <p>
+    as for my technical skills, the following is a non-exhaustive list of
+    technologies that i know how to use and/or work with -
+  </p>
+
+  <div class="lists">
+    <div>
+      <strong>programming languages</strong>
+      <ul>
+        <li>typescript/javascript</li>
+        <li>golang</li>
+        <li>rust</li>
+        <li>python</li>
+        <li>bash/zsh/fish</li>
+        <li>c++/c</li>
+        <li>8086/x86 assembly</li>
+        <li>dart</li>
+        <li>java/kotlin</li>
+        <li>vlang</li>
+      </ul>
+    </div>
+
+    <div>
+      <strong>frameworks</strong>
+      <ul>
+        <li>express/fastapi/hapi</li>
+        <li>react/preact/svelte/astro</li>
+        <li>echo</li>
+        <li>flask</li>
+        <li>fastapi</li>
+        <li>pytorch</li>
+        <li>android/flutter</li>
+      </ul>
+    </div>
+
+    <div>
+      <strong>tools</strong>
+      <ul>
+        <li>postgresql</li>
+        <li>sqlite</li>
+        <li>git</li>
+        <li>ssh</li>
+        <li>docker</li>
+        <li>bash and co(reutils)</li>
+        <li>xan</li>
+        <li>curl/httpie/oha</li>
+        <li>github/gitlab ci</li>
+      </ul>
+    </div>
+
+    <div>
+      <strong>specifications</strong>
+      <ul>
+        <li>rate limiting headers in http (ietf draft)</li>
+        <li>verifiable credentials and presentations (w3c draft)</li>
+        <li>multi agent function calling (gsoc)</li>
+        <li>model context protocol (nanda)</li>
+      </ul>
+    </div>
+
+    <div>
+      <strong>projects</strong>
+      <ul>
+        <li>agent torch</li>
+        <li>express rate limit</li>
+        <li>refined github</li>
+        <li>serve</li>
+        <li>fpm</li>
+        <li>android (aosp/lineage os)</li>
+      </ul>
+    </div>
+  </div>
+`
 export const education = () => ``
 export const resume = () => ``
 

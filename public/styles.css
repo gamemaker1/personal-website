@@ -124,11 +124,11 @@ body {
 }
 
 .output {
-  width: 60%;
+  width: 75%;
   padding-left: 0.5rem;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 1080px) {
   .prompt {
     width: 40%;
   }
@@ -220,4 +220,15 @@ body {
 blockquote {
   color: var(--foreground);
   opacity: 0.75;
+}
+
+.lists {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  gap: 16px;
+  text-align: left;
+}
+
+.lists > div > strong {
+  padding-left: 8px;
 }
