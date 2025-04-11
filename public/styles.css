@@ -11,14 +11,14 @@
   --cyan: #449dab;
   --white: #787c99;
 
-  --bold-black: #444b6a;
-  --bold-red: #ff7a93;
-  --bold-green: #b9f27c;
-  --bold-yellow: #ff9e64;
-  --bold-blue: #7da6ff;
-  --bold-magenta: #bb9af7;
-  --bold-cyan: #0db9d7;
-  --bold-white: #acb0d0;
+  --bright-black: #444b6a;
+  --bright-red: #ff7a93;
+  --bright-green: #b9f27c;
+  --bright-yellow: #ff9e64;
+  --bright-blue: #7da6ff;
+  --bright-magenta: #bb9af7;
+  --bright-cyan: #0db9d7;
+  --bright-white: #acb0d0;
 }
 
 body {
@@ -52,7 +52,7 @@ body {
 }
 
 .about > p > em > a {
-  color: var(--bold-yellow);
+  color: var(--bright-yellow);
   text-decoration: underline;
 }
 
