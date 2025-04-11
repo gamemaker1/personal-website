@@ -30,7 +30,7 @@ export const handle = (event) => {
   if (!event.target.value) return
   const output = document.createElement('div')
   output.innerHTML = execute(event.target.value)
-  output.style.textIndent = '0.5rem'
+  output.classList.add('output')
 
   // get references to the container and the current prompt. if they do not exist,
   // something is seriously wrong, so reload the page.
@@ -62,10 +62,11 @@ document.addEventListener('keydown', (event) => {
   const history = 
     [...document.querySelectorAll('.container > p:not(.latest) > input')]
 
-  // ctrl+shift+l should clear all previous commands.
+  // ctrl+shift+l should clear all previous commands and scroll to the top.
   if (event.ctrlKey && event.shiftKey && event.key == 'L')
     [...document.querySelectorAll('.container > *:not(.latest)')]
-      .forEach((command) => command.remove())
+      .forEach((command) => command.remove()),
+    window.scroll({ behavior: 'smooth', top: -64 })
 
   // the up and down arrows should move through the history of commands.
   if (event.key == 'ArrowUp' || event.key == 'ArrowDown') {
