@@ -5,3 +5,5 @@ watch:
 build:
 	@bun build --outfile public/bundle.js source/main.js
 
+serve:
+	@python -m http.server -d public/
