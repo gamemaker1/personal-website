@@ -232,3 +232,25 @@ blockquote {
 .lists > div > strong {
   padding-left: 8px;
 }
+
+.timeline {
+  width: 100%; max-height: 20%;
+  display: flex; gap: 32px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.slide {
+  width: 80%; height: 100%;
+  flex-shrink: 0; padding: 12px;
+  border: 1px dotted var(--foreground);
+  border-radius: 8px;
+  scroll-snap-align: center;
+}
+
+a {
+  color: var(--bright-yellow);
+  text-decoration: underline;
+}

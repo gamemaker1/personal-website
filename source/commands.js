@@ -76,7 +76,7 @@ export const about = () => `
 export const skills = () => `
   <p>
     as for my technical skills, the following is a non-exhaustive list of
-    technologies that i know how to use and/or work with -
+    technologies and projects that i know how to use and/or have worked with.
   </p>
 
   <div class="lists">
@@ -130,8 +130,8 @@ export const skills = () => `
       <strong>specifications</strong>
       <ul>
         <li>rate limiting headers in http (ietf draft)</li>
-        <li>verifiable credentials and presentations (w3c draft)</li>
-        <li>multi agent function calling (gsoc)</li>
+        <li>verifiable credentials and presentations (w3c)</li>
+        <li>multi agent function calling (gsoc project)</li>
         <li>model context protocol (nanda)</li>
       </ul>
     </div>
@@ -145,12 +145,88 @@ export const skills = () => `
         <li>serve</li>
         <li>sunbird rc</li>
         <li>beckn</li>
-        <li>android (aosp/lineage os)</li>
+        <li>android (aosp/lineage)</li>
       </ul>
     </div>
   </div>
 `
-export const education = () => ``
-export const resume = () => ``
+
+export const education = () => `
+  <div class="timeline">
+    <p class="slide" onclick="event.target.scrollIntoView({ behavior: 'smooth' })">
+      i studied in wisdom world school, wakad from first to tenth standard.
+      i was a junior house prefect, and represented my school in inter-school
+      debates and public speaking competitions - most notably winning second
+      place for my speech at once such contest. i have participated but never
+      won any sports competition - i seem to have a knack for running away
+      from problems, not people :P <br /><br />
+
+      i got into computers in around sixth or seventh grade, when my dad
+      introduced me to linux: he told me a game i wanted to play (prince of
+      persia) was only available on linux, and got me to install ubuntu by
+      myself on an ancient pc that was catching dust at home.
+    </p>
+
+    <p class="slide" onclick="event.target.scrollIntoView({ behavior: 'smooth' })">
+      as my interest grew, i learnt more and more about linux and computers -
+      going so far as to taking apart the pc itself and building it back with
+      a lego case, and installing every linux distro under the sun on it, even
+      gentoo! soon i got into coding stuff up for the fun of it, was introduced
+      to open source software, and the rest is all up on github.com/gamemaker1
+      for everyone too see (: <br /><br />
+
+      i took part in google code-in, and got a t-shirt for my contributions.
+      i also tried my hand at a lot of different things - from compiling roms
+      for my phone to creating android apps and writing a toy os in rust.
+    </p>
+
+    <p class="slide" onclick="event.target.scrollIntoView({ behavior: 'smooth' })">
+      during the lockdown, i started my own project - a knowledge platform
+      called dabbu which enabled users to access their information from multiple
+      providers (google drive, gmail, one drive, hard drives, etc.) as simple
+      files and folders. this took me on a deep dive into various topics -
+      from server architecture and api design, to nlp techniques, to knowledge
+      graphs. it also led to me creating another project - a text extractor for
+      office documents - which is downloaded over 10k times a week as of today.
+      <br /><br />
+
+      after that, i started contributing to other open source projects, like
+      express-rate-limit, and eventually ended up as a co-maintainer :)
+    </p>
+
+    <p class="slide" onclick="event.target.scrollIntoView({ behavior: 'smooth' })">
+      post lockdown, i spent two years studying for jee, all while continuing
+      to contribute as much as i could to open source projects. i worked on
+      sunbird rc - the registry and credentials system that backs india's
+      vaccine certificate system - and dived into verifiable presentations and
+      credentials. i also contributed to beckn, participating and winning an
+      honourable mention in an ondc national hackathon, helping them dockerise
+      their reference implementation and improving their developer docs. <br /><br />
+
+      i even gave a talk at the sunbird dpg tech fusion conference in pune in 2024
+      on my journey in open source software.
+    </p>
+
+    <p class="slide" onclick="event.target.scrollIntoView({ behavior: 'smooth' })">
+      and then, i joined iiit hyderabad as an undergraduate computer science
+      student. i was elected to the student parliament, and then to the position
+      of student academics secretary. <br /><br />
+
+      working alongside batchmate aarnav pai, we completely revamped the college's
+      mess system, switching from biometric authentication to qr codes, allowing
+      per-meal registrations while respecting the capacities of messes, adding an
+      easy to use admin interface, streamlining the billing process, all in 20 days
+      of programming and 10 days of testing. we even made it an open source project;
+      you can check out the source code at gitlab.iiit.ac.in/messcom.
+    </p>
+  </div>
+`
+
+export const resume = () => `
+  <p>
+    you can download my resume by clicking on
+    <a href="assets/media/vedant-kulkarni.pdf" download>this link</a>.
+  </p>
+`
 
 export const skill = () => `issue.`
