@@ -1,8 +1,10 @@
 import * as commands from './commands.js'
 
 // execute the command if it is valid, otherwise print an error.
-export const execute = (command) =>
-  commands[command]?.() ?? `could not execute ${command}, type 'help' to see a list of valid commands`
+export const execute = (command) => {
+  const [executable, ...args] = command.split(' ')
+  return commands[executable]?.(...args) ?? `${executable} isn't a valid command!`
+}
 
 export const handle = (event) => {
   // only process the command once the enter key has been pressed.
@@ -14,8 +16,9 @@ export const handle = (event) => {
     // element, so we add it manually to the current value of the input. check if the input
     // is non-empty and the prefix of a valid command.
     const value = event.target.value + String.fromCharCode(event.keyCode)
-    const valid = !!value && executables.some(
-      (x) => x.startsWith(value)
+    const executable = value.split(' ')[0]
+    const valid = !!executable && executables.some(
+      (x) => x.startsWith(executable)
     )
 
     // if it is, highlight it blue, otherwise, highlight it red.
@@ -108,4 +111,25 @@ window.prompt = (command) => {
   // this has to be correct syntax, since its being auto-filled, so set the
   // syntax highlighting color to blue.
   prompt.setAttribute('style', 'color: var(--blue)')
+}
+
+window.fullscreen = (event) => {
+  const overlay = document.createElement('div')
+  overlay.classList.add('fullscreen')
+
+  const caption = document.createElement('p')
+  caption.innerHTML = event.target.alt
+  const image = document.createElement('img')
+  image.src = event.target.src
+  image.alt = event.target.alt
+
+  overlay.appendChild(caption)
+  overlay.appendChild(image)
+  document.body.appendChild(overlay)
+  document.addEventListener('keydown', (event) => {
+    if (event.key == 'Escape') {
+      overlay.remove()
+      document.removeEventListener('keydown', this)
+    }
+  })
 }
