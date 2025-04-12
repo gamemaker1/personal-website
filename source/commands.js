@@ -246,11 +246,12 @@ export const tokenize = () => `
   <div class="tokens"></div>
 `
 
-export const skill = () => `issue.`
-
+// some commands, just for fun :)
+export const intern = () => `<3`
 export const sudo = () => {
   window.open('https://youtu.be/dQw4w9WgXcQ', '_blank').focus()
   return `you are not in the sudoers file. this incident will be reported.`
 }
-export const doas = sudo
-export const su = sudo
+export const hallo = () => `
+  <p><img src="assets/media/whale.svg" class="whale"><strong> hallo!</strong></p>
+`
