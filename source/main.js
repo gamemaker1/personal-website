@@ -65,6 +65,9 @@ export const handle = (event) => {
   output.innerHTML = execute(event.target.value)
   output.classList.add('output')
 
+  // log the command as an analytics event.
+  window.analytics.log('view', event.target.value)
+
   // get references to the container and the current prompt. if they do not exist,
   // something is seriously wrong, so reload the page.
   const container = document.querySelector('.container')
@@ -110,12 +113,13 @@ document.querySelector('.latest > .prompt')
   if (event.ctrlKey && event.shiftKey && event.key == 'L')
     [...document.querySelectorAll('.container > *:not(.latest)')]
       .forEach((command) => command.remove()),
-    window.scroll({ behavior: 'smooth', top: -64 })
+    window.scroll({ behavior: 'smooth', top: -64 }),
+    window.analytics.log('view', 'clear')
 
   // the up and down arrows should move through the history of commands.
   if (event.key == 'ArrowUp' || event.key == 'ArrowDown') {
-    // don't let these keys move the cursor around.
-    event.preventDefault()
+    // log the event, and don't let these keys move the cursor around.
+    window.analytics.log('view', 'history'); event.preventDefault()
 
     // instead, figure out the current position we are at in history.
     let i = parseInt(prompt.dataset.history)
@@ -145,6 +149,30 @@ document.querySelector('.latest > .prompt')
   if (focused?.type != 'textarea')
     document.querySelector('.latest > input')?.focus()
 })
+
+// log all click events as analytics events.
+document.addEventListener('click', (event) => window.analytics.log('click', event))
+document.querySelector('.container').addEventListener('click', (event) => window.analytics.log('click', event))
+// log page load as an analytics event.
+document.addEventListener('DOMContentLoaded', () => {
+  window.analytics.log('view', 'page')
+})
+
+// log analytics events to the console.
+window.analytics = {
+  log: (type, event) => {
+    const timestamp = new Date().toLocaleString()
+    const target = typeof event == 'string' ? event : (
+      event.target?.type ?? event.target?.tagName?.toLowerCase()
+    ); if (!target) return
+
+    console.log(`> analytics event
+      - time: ${timestamp}
+      - type: ${type}
+      - elem: ${target}`
+    .replace(/     /g, ''))
+  }
+}
 
 // allow filling the prompt with a command for the user.
 window.prompt = (command) => {

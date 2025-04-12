@@ -51,7 +51,7 @@ export const about = () => `
   <div class="views">
     <img
       src="assets/media/riverside.jpg" alt="a riverside sunset"
-      onclick="fullscreen(event)"
+      onclick="analytics.log('click', event); fullscreen(event)"
     />
     <p class="caption">
       clockwise from the top: a riverside sunset, dusk on a
@@ -59,11 +59,11 @@ export const about = () => `
     </p>
     <img
       src="assets/media/bridge-dusk.jpg" alt="dusk on a lonely bridge"
-      onclick="fullscreen(event)"
+      onclick="analytics.log('click', event); fullscreen(event)"
     />
     <img
       src="assets/media/shatabdi-window.jpg" alt="the view from a shatabdi window"
-      onclick="fullscreen(event)"
+      onclick="analytics.log('click', event); fullscreen(event)"
     />
   </div>
 

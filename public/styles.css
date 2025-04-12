@@ -257,7 +257,7 @@ blockquote {
 }
 
 .waypoints {
-  display: flex; gap: 24px;
+  display: flex; gap: 16px;
 }
 
 .timeline {
