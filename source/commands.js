@@ -28,6 +28,13 @@ export const help = () => `
       <button onclick="window.prompt('resume')">resume</button>
     </strong></div>
     <div>download a pdf of my resume.</div>
+
+    <br />
+
+    <div><strong class="command">
+      <button onclick="window.prompt('tokenize')">tokenize</button>
+    </strong></div>
+    <div>play around with a basic tokenizer.</div>
   </div>
 `
 
@@ -235,8 +242,7 @@ export const resume = () => `
 `
 
 export const tokenize = () => `
-  <textarea placeholder="type stuff here!" oninput="window.tokenize(event)">
-  </textarea>
+  <textarea placeholder="type stuff here!" oninput="window.tokenize(event)"></textarea>
   <div class="tokens"></div>
 `
 

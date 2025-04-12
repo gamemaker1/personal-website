@@ -301,4 +301,21 @@ textarea:focus {
 
 .tokens {
   margin-top: 8px;
+  text-align: left;
+  font-size: 10px;
+}
+
+.statistic {
+  text-decoration: underline dotted var(--magenta);
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 720px) {
+  .tokens {
+    font-size: 8px;
+  }
+
+  .statistic {
+    font-size: 10px;
+  }
 }

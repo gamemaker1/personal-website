@@ -1,4 +1,5 @@
 import * as commands from './commands.js'
+import { tokenize } from './tokens.js'
 
 // execute the command if it is valid, otherwise print an error.
 export const execute = (command) => {
@@ -187,16 +188,21 @@ window.fullscreen = (event) => {
   })
 }
 
+// call the tokenize function, and display the results near the target textarea.
+// this allows us to have multiple tokenizers running at the same time.
 window.tokenize = (event) => {
-  const text = event.target.value
-  const coalesce = (num) => num?.length ?? 0;
-  const stats = {
-    letters: coalesce(text.match(/[a-zA-Z]/g)),
-    words: coalesce(text.match(/\b\w+\b/g)),
-    spaces: coalesce(text.match(/ /g)),
-    newlines: coalesce(text.match(/(\n|\r\n)/g)),
-    symbols: coalesce(text.match(/[!@#$%^&*-_+=?\/:;,.<>~\(\)\[\]\{\}\'\"`]/g))
-  }
+  const stats = tokenize(event.target.value)
 
-  event.target.nextElementSibling.innerHTML = JSON.stringify(stats, undefined, 4)
+  // format the output. each line is a category of stats, and following the
+  // underlined heading are the categories and their counts, separated by |
+  const output = Object.entries(stats).map(([name, group]) =>
+      `<span class="statistic">${name}</span> `.padEnd(13, ' ')  + Object.entries(group)
+        .filter(([_, value]) => value > 0)
+        .map(([key, value]) => `<small>${value} ${key}</small>` )
+        .join(' | ')
+    ).join('<br />')
+
+  // display the output and make only the first heading bold as a stylistic touch.
+  const target = event.target.nextElementSibling
+  target.innerHTML = output.replace('general', '<strong>statistics</strong>')
 }
