@@ -7,3 +7,8 @@ build:
 
 serve:
 	@python -m http.server -d public/
+
+deploy:
+	@tar czf dist.tgz public/*
+	@scp dist.tgz web:~/dist.tgz
+	@ssh -T web < scripts/deploy

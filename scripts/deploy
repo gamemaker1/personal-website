@@ -1,0 +1,3 @@
+rm -rf public_html
+tar xzf dist.tgz
+mv public public_html
