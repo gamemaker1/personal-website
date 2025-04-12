@@ -152,13 +152,17 @@ export const skills = () => `
 `
 
 export const education = () => `
-  <div>
+  <div class="waypoints">
     <a href="#school">school</a>
     <a href="#junior-college">junior college</a>
     <a href="#undergrad">undergrad</a>
   </div>
 
-  <div><em><small>click on one of the above, or swipe through the timeline below.</small></em></div>
+  <div>
+    <em><small>
+      click on one of the above, or swipe through the timeline below.
+    </small></em>
+  </div>
 
   <div class="timeline">
     <p id="school" class="slide" onclick="event.target.scrollIntoView({ behavior: 'smooth' })">

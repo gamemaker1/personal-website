@@ -28,8 +28,9 @@ export const autocomplete = (event) => {
 }
 
 export const highlight = (event) => {
-  // if it is not an enter key or a tab key, perform syntax highlighting.
-  if (event.key == 'Enter' && event.key == 'Tab') return
+  // if it is not a special key, perform syntax highlighting.
+  const modifiers = ['Enter', 'Tab', 'Control', 'Meta', 'Alt']
+  if (modifiers.includes(event.key)) return
 
   // get a list of all the valid commands.
   const executables = Object.keys(commands)
@@ -38,10 +39,10 @@ export const highlight = (event) => {
   // element, so we add it manually to the current value of the input. check if the input
   // is non-empty and the prefix of a valid command.
   const value = event.target.value + (event.key.length > 1 ? '' : event.key)
-  const executable = value.split(' ')[0]
-  const valid = !!executable && executables.some(
+  const executable = value.trim().split(' ')[0]
+  const valid = !executable || (!!executable && executables.some(
     (x) => x.startsWith(executable)
-  )
+  ))
 
   // if it is, highlight it blue, otherwise, highlight it red.
   const toRemove = valid ? 'invalid' : 'valid'
@@ -58,7 +59,7 @@ export const handle = (event) => {
   if (event.key != 'Enter') return
 
   // otherwise, if enter was pressed, execute the command and get the html output
-  if (!event.target.value) return
+  if (!event.target.value.trim()) return
   const output = document.createElement('div')
   output.innerHTML = execute(event.target.value)
   output.classList.add('output')
