@@ -8,7 +8,7 @@ export const execute = (command) => {
 
 export const autocomplete = (event) => {
   // if the key pressed is tab, autocomplete the command if possible.
-  if (event.key != 'Tab') return
+  if (event.key != 'Tab' || (event.key == 'Tab' && event.shiftKey)) return
   event.preventDefault()
 
   // if the prompt is empty and the user presses tab, accept the default value
@@ -98,7 +98,8 @@ document.querySelector('.latest > .prompt')
         .addEventListener('keydown', autocomplete)
 
 // handle keyboard shortcuts for the page.
-document.addEventListener('keydown', (event) => {
+document.querySelector('.latest > .prompt')
+.addEventListener('keydown', (event) => {
   const prompt = document.querySelector('.latest > input')
   const history = 
     [...document.querySelectorAll('.container > p:not(.latest) > input')]
@@ -133,8 +134,14 @@ document.addEventListener('keydown', (event) => {
     }
   }
 
-  // make sure the input is always focused.
-  document.querySelector('.latest > input')?.focus()
+  // check what the currently focused element is.
+  let focused = document.activeElement
+  if (focused == document.body) focused = document.querySelector(':focus')
+
+  // if it is a textarea, the user is using the tokenize command - so
+  // we let the focus remain on it. otherwise, focus on the prompt.
+  if (focused?.type != 'textarea')
+    document.querySelector('.latest > input')?.focus()
 })
 
 // allow filling the prompt with a command for the user.
@@ -149,28 +156,47 @@ window.prompt = (command) => {
   prompt.classList.add('valid')
 }
 
+// fullscreen an image for the user.
 window.fullscreen = (event) => {
+  // create an overlay that covers the entire screen.
   const overlay = document.createElement('div')
   overlay.classList.add('fullscreen')
 
+  // get the image and caption it with its `alt`.
   const caption = document.createElement('p')
   caption.innerHTML = event.target.alt
   const image = document.createElement('img')
-  image.src = event.target.src
-  image.alt = event.target.alt
+  image.src = event.target.src; image.alt = event.target.alt
 
-  overlay.appendChild(caption)
-  overlay.appendChild(image)
+  // display the caption above the image, on top of the overlay.
+  overlay.appendChild(caption); overlay.appendChild(image)
   document.body.appendChild(overlay)
 
+  // if the user clicks anywhere on the overlay, dismiss it.
   overlay.addEventListener('click', () => {
     overlay.remove()
     overlay.removeEventListener('click', this)
   })
+
+  // if the user presses the escape key, dismiss the overlay.
   document.addEventListener('keydown', (event) => {
     if (event.key == 'Escape') {
       overlay.remove()
       document.removeEventListener('keydown', this)
     }
   })
+}
+
+window.tokenize = (event) => {
+  const text = event.target.value
+  const coalesce = (num) => num?.length ?? 0;
+  const stats = {
+    letters: coalesce(text.match(/[a-zA-Z]/g)),
+    words: coalesce(text.match(/\b\w+\b/g)),
+    spaces: coalesce(text.match(/ /g)),
+    newlines: coalesce(text.match(/(\n|\r\n)/g)),
+    symbols: coalesce(text.match(/[!@#$%^&*-_+=?\/:;,.<>~\(\)\[\]\{\}\'\"`]/g))
+  }
+
+  event.target.nextElementSibling.innerHTML = JSON.stringify(stats, undefined, 4)
 }

@@ -281,3 +281,24 @@ a {
   color: var(--bright-yellow);
   text-decoration: underline;
 }
+
+textarea {
+  width: 100%; height: 200px;
+  background: var(--background);
+  color: var(--foreground);
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px dotted var(--magenta);
+  border-radius: 8px;
+  resize: vertical;
+  font-size: 12px;
+}
+
+textarea:focus {
+  border: 1px solid var(--magenta);
+  outline: none;
+}
+
+.tokens {
+  margin-top: 8px;
+}

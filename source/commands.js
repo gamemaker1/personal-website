@@ -234,6 +234,12 @@ export const resume = () => `
   </p>
 `
 
+export const tokenize = () => `
+  <textarea placeholder="type stuff here!" oninput="window.tokenize(event)">
+  </textarea>
+  <div class="tokens"></div>
+`
+
 export const skill = () => `issue.`
 
 export const sudo = () => {
