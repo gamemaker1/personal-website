@@ -21,6 +21,15 @@
   --bright-white: #acb0d0;
 }
 
+@font-face {
+    font-family: 'Blex Mono';
+    src: url('assets/fonts/blex-mono.ttf') format('truetype');
+}
+
+* {
+  font-family: 'Blex Mono';
+}
+
 body {
   width: 100hh; height: 100vh;
   background: var(--background);
