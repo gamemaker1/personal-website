@@ -231,3 +231,10 @@ export const resume = () => `
 `
 
 export const skill = () => `issue.`
+
+export const sudo = () => {
+  window.open('https://youtu.be/dQw4w9WgXcQ', '_blank').focus()
+  return `you are not in the sudoers file. this incident will be reported.`
+}
+export const doas = sudo
+export const su = sudo
