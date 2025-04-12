@@ -14,8 +14,8 @@ const pronouns = {
 }
 
 const prepositions = {
+  complex: ["according to", "ahead of", "apart from", "as for", "as of", "as per", "as to", "aside from", "because of", "close to", "due to", "except for", "far from", "inside of", "instead of", "near to", "next to", "on account of", "on top of", "out of", "outside of", "owing to", "prior to", "subsequent to", "such as", "thanks to", "up to"],
   simple: ["a", "aboard", "about", "above", "abreast", "absent", "across", "after", "against", "ago", "ahead", "along", "alongside", "amid", "amidst", "among", "amongst", "anti", "around", "as", "astride", "at", "atop", "bar", "barring", "before", "behind", "below", "beneath", "beside", "besides", "between", "beyond", "but", "by", "circa", "concerning", "considering", "despite", "down", "during", "except", "excluding", "following", "for", "from", "in", "including", "inside", "into", "like", "minus", "near", "notwithstanding", "of", "off", "on", "onto", "opposite", "out", "outside", "over", "past", "per", "plus", "regarding", "round", "save", "since", "than", "through", "throughout", "till", "to", "toward", "towards", "under", "underneath", "unlike", "until", "up", "upon", "versus", "via", "with", "within", "without", "worth"],
-  complex: ["according to", "ahead of", "apart from", "as for", "as of", "as per", "as to", "aside from", "because of", "close to", "due to", "except for", "far from", "inside of", "instead of", "near to", "next to", "on account of", "on top of", "out of", "outside of", "owing to", "prior to", "subsequent to", "such as", "thanks to", "up to"]
 }
 
 const articles = { a: ["a"], an: ["an"] }
