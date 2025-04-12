@@ -6,28 +6,56 @@ export const execute = (command) => {
   return commands[executable]?.(...args) ?? `${executable} isn't a valid command!`
 }
 
+export const autocomplete = (event) => {
+  // if the key pressed is tab, autocomplete the command if possible.
+  if (event.key != 'Tab') return
+  event.preventDefault()
+
+  // if the prompt is empty and the user presses tab, accept the default value
+  // of `help` and autofill it.
+  const prompt = document.querySelector('.latest > input')
+  if (!prompt.value) {
+    window.prompt(prompt.placeholder); return
+  }
+
+  // otherwise, find a command that matches whatever the user has typed in and
+  // autofill it.
+  const executables = Object.keys(commands)
+  const completion = executables.find(
+    (x) => x.startsWith(prompt.value)
+  )
+  if (completion) window.prompt(completion)
+}
+
+export const highlight = (event) => {
+  // if it is not an enter key or a tab key, perform syntax highlighting.
+  if (event.key == 'Enter' && event.key == 'Tab') return
+
+  // get a list of all the valid commands.
+  const executables = Object.keys(commands)
+
+  // note that when the keydown event is fired, the input still does not have the last
+  // element, so we add it manually to the current value of the input. check if the input
+  // is non-empty and the prefix of a valid command.
+  const value = event.target.value + (event.key.length > 1 ? '' : event.key)
+  const executable = value.split(' ')[0]
+  const valid = !!executable && executables.some(
+    (x) => x.startsWith(executable)
+  )
+
+  // if it is, highlight it blue, otherwise, highlight it red.
+  const toRemove = valid ? 'invalid' : 'valid'
+  const toAdd = valid ? 'valid' : 'invalid'
+  const prompt = document.querySelector('.latest > .prompt')
+  prompt.classList.remove(toRemove); prompt.classList.add(toAdd)
+
+  // let the user continue typing.
+  return
+}
+
 export const handle = (event) => {
   // only process the command once the enter key has been pressed.
-  if (event.keyCode != 13) {
-    // if it is not an enter key, perform syntax highlighting.
-    const executables = Object.keys(commands)
-
-    // note that when the keypress event is fired, the input still does not have the last
-    // element, so we add it manually to the current value of the input. check if the input
-    // is non-empty and the prefix of a valid command.
-    const value = event.target.value + String.fromCharCode(event.keyCode)
-    const executable = value.split(' ')[0]
-    const valid = !!executable && executables.some(
-      (x) => x.startsWith(executable)
-    )
-
-    // if it is, highlight it blue, otherwise, highlight it red.
-    document.querySelector('.latest > .prompt')
-            .setAttribute('style', 'color: ' + (valid ? 'var(--blue)' : 'var(--red)'))
-
-    // let the user continue typing.
-    return
-  }
+  if (event.key != 'Enter') return
 
   // otherwise, if enter was pressed, execute the command and get the html output
   if (!event.target.value) return
@@ -58,6 +86,15 @@ export const handle = (event) => {
     prompt.getBoundingClientRect().top < 0
   ) prompt.scrollIntoView({ behavior: 'smooth' })
 }
+
+// add an event listener to do basic syntax highlighting and to
+// handle user input in the prompt.
+document.querySelector('.latest > .prompt')
+        .addEventListener('keydown', highlight)
+document.querySelector('.latest > .prompt')
+        .addEventListener('keypress', handle)
+document.querySelector('.latest > .prompt')
+        .addEventListener('keydown', autocomplete)
 
 // handle keyboard shortcuts for the page.
 document.addEventListener('keydown', (event) => {
@@ -98,9 +135,6 @@ document.addEventListener('keydown', (event) => {
   // make sure the input is always focused.
   document.querySelector('.latest > input')?.focus()
 })
-// add an event listener to handle user input in the prompt.
-document.querySelector('.latest > .prompt')
-        .addEventListener('keypress', handle)
 
 // allow filling the prompt with a command for the user.
 window.prompt = (command) => {
@@ -110,7 +144,8 @@ window.prompt = (command) => {
 
   // this has to be correct syntax, since its being auto-filled, so set the
   // syntax highlighting color to blue.
-  prompt.setAttribute('style', 'color: var(--blue)')
+  prompt.classList.remove('invalid')
+  prompt.classList.add('valid')
 }
 
 window.fullscreen = (event) => {
