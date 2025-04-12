@@ -73,8 +73,9 @@ export const handle = (event) => {
 
   // create a copy of the current prompt with the command intact. remove the class
   // that marks it the current, active command.
-  const current = prompt.cloneNode(true)  
+  const current = prompt.cloneNode(true)
   current.classList.remove('latest')
+  current.querySelector('input').setAttribute('disabled', true)
   current.querySelector('.ps').classList.remove('active')
 
   // add the command and its output to history.
