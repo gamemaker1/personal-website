@@ -109,8 +109,9 @@ document.addEventListener('keydown', (event) => {
   if (focused == document.body) focused = document.querySelector(':focus')
 
   // if it is a textarea, the user is using the tokenize command - so
-  // we let the focus remain on it. otherwise, focus on the prompt.
-  if (focused?.type == 'textarea') return
+  // we let the focus remain on it. if it is a button, it's on one of
+  // the commands in the help output.
+  if (focused?.type == 'textarea' || focused?.type == 'submit') return
 
   const prompt = document.querySelector('.latest > input')
   const history = 
@@ -159,14 +160,42 @@ document.addEventListener('DOMContentLoaded', () => {
   window.analytics.log('view', 'page')
 })
 
+// get a selector for an element from an event, including information that
+// will uniquely identify the element as much as possible.
+const selector = (event) => {
+  // get the element's tag. if somehow there is no tag, return
+  // the id of the element, or just a '#'.
+  const tag = event.target?.tagName?.toLowerCase()
+  if (!tag) return `#${event.target.id ?? ''}`
+
+  // if it is an anchor or an image, return the element with
+  // its href or its alt text to identify it.
+  if (tag == 'a') return `${tag}[href="${event.target.href.replace(window.location.origin, '')}"]`
+  if (tag == 'img') return `${tag}[alt="${event.target.alt}"]`
+
+  // if the element has an id, return that. otherwise, list
+  // all its classes and append that to the tag.
+  if (event.target.id) return `#${event.target.id}`
+  if (event.target.classList.length > 0)
+    return `${tag}.${[...event.target.classList].join('.')}`
+
+  // if nothing else, just return the tag.
+  return tag
+}
+
 // log analytics events to the console.
 window.analytics = {
   log: (type, event) => {
+    // we want to log the current timestamp, type of event
+    // (view/click), and the element in question.
     const timestamp = new Date().toLocaleString()
     const target = typeof event == 'string' ? event : (
-      event.target?.type ?? event.target?.tagName?.toLowerCase()
-    ); if (!target) return
+      selector(event)
+    ); if (!target || target == '#') return
 
+    // log it to the console. in the future, replace this with
+    // code that makes a post request to a proper analytics
+    // service to store the event.
     console.log(`> analytics event
       - time: ${timestamp}
       - type: ${type}
