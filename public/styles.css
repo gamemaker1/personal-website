@@ -306,6 +306,12 @@ blockquote {
   scrollbar-width: none;
 }
 
+.timeline:focus {
+  outline: none;
+  border: none;
+  padding: 0;
+}
+
 .slide {
   width: 80%; height: 100%;
   flex-shrink: 0; padding: 12px;
