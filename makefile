@@ -11,4 +11,4 @@ serve:
 deploy:
 	@tar czf dist.tgz public/*
 	@scp dist.tgz web:~/dist.tgz
-	@ssh -T web < scripts/deploy
+	@ssh -T web < script/deploy
