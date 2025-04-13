@@ -136,9 +136,9 @@ export const skills = () => `
     <div>
       <strong>specifications</strong>
       <ul>
-        <li>rate limiting headers in http (ietf draft)</li>
+        <li>rate limiting headers in http (ietf)</li>
         <li>verifiable credentials and presentations (w3c)</li>
-        <li>multi agent function calling (gsoc project)</li>
+        <li>multi agent function calling (deepmind)</li>
         <li>model context protocol (nanda)</li>
       </ul>
     </div>
@@ -167,7 +167,7 @@ export const education = () => `
 
   <div>
     <em><small>
-      click on one of the above, or swipe through the timeline below.
+      click on one of the above, or swipe through the timeline.
     </small></em>
   </div>
 
@@ -193,13 +193,12 @@ export const education = () => `
     <p id="junior-college" class="slide" onclick="event.target.scrollIntoView({ behavior: 'smooth' })">
       during the lockdown, i built a project called dabbu - a knowledge platform
       that let users treat data from multiple providers like simple folders.
-      it took me through api design, nlp, server architecture, and more. it
-      also led me to write my own node.js package - a text extractor for office
-      documents - which now gets 10k+ downloads a week. <br /><br />
-
-      i also started contributing to open source projects like refined
-      github, fpm, serve, express-rate-limit, and agent torch, and ended up
-      co-maintaining the last two :) <br /><br />
+      it took me through api design, nlp, server architecture, and more.
+      it also led me to write my own node.js package - a text extractor for
+      office documents - which now gets 10k+ downloads a week. i also started
+      contributing to open source projects like refined github, fpm, serve,
+      express-rate-limit, and agent torch, and ended up co-maintaining the last
+      two! <br /><br />
 
       post lockdown, i prepared for jee for two years while continuing my open
       source work. i contributed to sunbird rc (which backs india’s vaccine
@@ -207,9 +206,9 @@ export const education = () => `
       the beckn protocol – even got an honourable mention in a national ondc
       hackathon. <br /><br />
 
-      i gave a few talks in 2024 too - one in the sunbird dpg tech fusion
-      conference, about my journey into open source - and one at the foss united
-      meetup in hyderabad about the work i was doing on agent torch.
+      i gave a few talks in 2024 too - at the sunbird dpg tech fusion
+      conference, about my open source journey, and at the foss united meetup in
+      hyderabad about agent torch.
     </p>
 
     <p id="undergrad" class="slide" onclick="event.target.scrollIntoView({ behavior: 'smooth' })">    
@@ -237,7 +236,7 @@ export const education = () => `
 export const resume = () => `
   <p>
     you can download my resume by clicking on
-    <a href="assets/media/vedant-kulkarni.pdf" download>this link</a>.
+    <a href="assets/content/vedant-kulkarni-resume.pdf" download>this link</a>.
   </p>
 `
 

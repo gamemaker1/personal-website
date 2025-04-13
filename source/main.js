@@ -103,11 +103,21 @@ document.querySelector('.latest > .prompt')
         .addEventListener('keydown', autocomplete)
 
 // handle keyboard shortcuts for the page.
-document.querySelector('.latest > .prompt')
-.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', (event) => {
+  // check what the currently focused element is.
+  let focused = document.activeElement
+  if (focused == document.body) focused = document.querySelector(':focus')
+
+  // if it is a textarea, the user is using the tokenize command - so
+  // we let the focus remain on it. otherwise, focus on the prompt.
+  if (focused?.type == 'textarea') return
+
   const prompt = document.querySelector('.latest > input')
   const history = 
     [...document.querySelectorAll('.container > p:not(.latest) > input')]
+
+  // auto-focus on the prompt first.
+  prompt.focus()
 
   // ctrl+shift+l should clear all previous commands and scroll to the top.
   if (event.ctrlKey && event.shiftKey && event.key == 'L')
@@ -139,15 +149,6 @@ document.querySelector('.latest > .prompt')
       )
     }
   }
-
-  // check what the currently focused element is.
-  let focused = document.activeElement
-  if (focused == document.body) focused = document.querySelector(':focus')
-
-  // if it is a textarea, the user is using the tokenize command - so
-  // we let the focus remain on it. otherwise, focus on the prompt.
-  if (focused?.type != 'textarea')
-    document.querySelector('.latest > input')?.focus()
 })
 
 // log all click events as analytics events.
