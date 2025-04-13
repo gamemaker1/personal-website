@@ -104,21 +104,21 @@ document.querySelector('.latest > .prompt')
 
 // handle keyboard shortcuts for the page.
 document.addEventListener('keydown', (event) => {
+  const prompt = document.querySelector('.latest > input')
+  const history =
+    [...document.querySelectorAll('.container > p:not(.latest) > input')]
+
   // check what the currently focused element is.
   let focused = document.activeElement
   if (focused == document.body) focused = document.querySelector(':focus')
 
-  // if it is a textarea, the user is using the tokenize command - so
-  // we let the focus remain on it. if it is a button, it's on one of
-  // the commands in the help output.
-  if (focused?.type == 'textarea' || focused?.type == 'submit') return
+  // if the user is tabbing through elements on the site, let them. if their
+  // focus is idle, then snap it to the prompt.
+  if (
+    focused?.type == 'textarea' || focused?.type == 'submit' ||
+    focused?.tagName == 'A' || focused?.classList.contains('timeline')
+  ) return; else prompt.focus()
 
-  const prompt = document.querySelector('.latest > input')
-  const history = 
-    [...document.querySelectorAll('.container > p:not(.latest) > input')]
-
-  // auto-focus on the prompt first.
-  prompt.focus()
 
   // ctrl+shift+l should clear all previous commands and scroll to the top.
   if (event.ctrlKey && event.shiftKey && event.key == 'L')
@@ -152,13 +152,12 @@ document.addEventListener('keydown', (event) => {
   }
 })
 
-// log all click events as analytics events.
+// add event listeners on all elements that log view, focus and click events.
+document.addEventListener('DOMContentLoaded', () => window.analytics.log('view', 'page'))
+document.addEventListener('focusin', (event) => window.analytics.log('focus', event))
 document.addEventListener('click', (event) => window.analytics.log('click', event))
-document.querySelector('.container').addEventListener('click', (event) => window.analytics.log('click', event))
-// log page load as an analytics event.
-document.addEventListener('DOMContentLoaded', () => {
-  window.analytics.log('view', 'page')
-})
+document.querySelector('.container')
+.addEventListener('click', (event) => window.analytics.log('click', event))
 
 // get a selector for an element from an event, including information that
 // will uniquely identify the element as much as possible.
