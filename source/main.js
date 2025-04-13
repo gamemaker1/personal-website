@@ -67,6 +67,8 @@ export const handle = (event) => {
 
   // log the command as an analytics event.
   window.analytics.log('view', event.target.value)
+  // set the page title to the current command.
+  document.title = `web@vedant > ${event.target.value}`
 
   // get references to the container and the current prompt. if they do not exist,
   // something is seriously wrong, so reload the page.
