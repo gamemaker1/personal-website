@@ -156,7 +156,7 @@ document.addEventListener('keydown', (event) => {
 
 // add event listeners on all elements that log view, focus and click events.
 document.addEventListener('DOMContentLoaded', () => window.analytics.log('view', 'page'))
-document.addEventListener('focusin', (event) => window.analytics.log('focus', event))
+document.addEventListener('mouseover', (event) => window.analytics.log('focus', event))
 document.addEventListener('click', (event) => window.analytics.log('click', event))
 document.querySelector('.container')
 .addEventListener('click', (event) => window.analytics.log('click', event))
