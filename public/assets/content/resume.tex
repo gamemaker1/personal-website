@@ -1,0 +1,169 @@
+\documentclass{resume}
+
+\usepackage[a4paper, left=2em, right=2em, top=2.5em, bottom=0em]{geometry}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{lipsum}
+\usepackage[none]{hyphenat}
+\usepackage{changepage}
+\usepackage{hyperref}
+
+\setlength{\columnsep}{0cm}
+\defaultfontfeatures{LetterSpace=2.5}
+\setmainfont{blex-mono}[
+    Path=../fonts/,
+    Extension = .ttf,
+    UprightFont=*-light,
+    BoldFont=*-medium,
+    ItalicFont=*-light-italic,
+    ItalicFeatures={SmallCapsFont=*-light-italic},
+    BoldFeatures={SmallCapsFont=*-medium,},
+    SmallCapsFont=*-medium,
+]
+
+\hypersetup{
+    unicode=true,
+    colorlinks=true,
+    urlcolor=black,
+}
+
+\title{Resume}
+\author{Vedant Kulkarni}
+\date{April 2025}
+
+\begin{document}
+
+\headerline{\xhrulefill{black}{0.6em}}
+
+\begin{multicols}{2}
+    \headerline{\Huge \textbf{Vedant\newline Kulkarni}}
+    \cvpara{\href{mailto:vedant.kulkarni@students.iiit.ac.in}{vedant.kulkarni@students.iiit.ac.in} \newline \href{https://github.com/gamemaker1}{github.com/gamemaker1}}
+
+    \columnbreak
+    \begin{spacing}{1.2} {\small
+        I am an undergraduate computer science student at IIIT Hyderabad. I have contributed 400+ issues/PRs across 30+ repositories over the past seven years - starting with my first PR for Google Code-In when in 2018, to most recently working with MIT Media Lab’s Large Population Models (LPM) team on their AgentTorch project for differentiable agent based learning since April 2024.
+
+        I’m the co-maintainer for several popular node.js libraries such as express-rate-limit and express-slow-down used to shield servers from DDOS attacks, and contributor to vercel/serve, Refined Github, FPM, Beckn, Sunbird Registries and Credentials.
+    } \end{spacing}
+\end{multicols}
+
+\vspace{1em}
+\setlength{\columnsep}{1cm}
+
+\cvsection{Experience}
+\begin{adjustwidth}{2em}{0em}
+
+\experience{Creator, Mess Portal}{at IIIT Hyderabad}{02/2025 - Present}
+\project{Mess Management System}{design, implementation, deployment, maintenence}
+\tech{go, postgres, rust, opencv, react, shadcn, tailwind, metabase, umami}
+\work{gitlab.iiit.ac.in/messcom}
+\begin{itemize}
+    \item designed the system transparently from ground-up
+    \item made conscious design decisions based on challenges in old system
+    \item implemented it with my batchmate Aarnav Pai in 20 days, with 10 days for testing
+    \item ensured a fast, secure and streamlined experience for students and staff
+    \item open-sourced at the project for the community to contribute
+\end{itemize}
+\vspace{0.5em}
+
+\experience{Maintainer, Agent Torch}{an MIT Media Lab project}{04/2024 - Present}
+\project{Agent Based Modelling with LLMs}{research, collaboration}
+\tech{python, pytorch, llms, langchain, open street maps, leaflet}
+\work{github.com/agenttorch}
+\begin{itemize}
+    \item working on simulating peer to peer solar networks on a city scale
+    \item integrated with decentralized protocols like beckn
+    \item enhanced programmatic api and config format
+    \item created documentation and tutorials for the project
+\end{itemize}
+\vspace{0.5em}
+
+\experience{Maintainer, Express Rate Limit}{}{11/2021 - Present}
+\project{Popular Node Package}{rewrite, api design, maintenance}
+\tech{typescript, express, databases}
+\work{github.com/express-rate-limit}
+\begin{itemize}
+    \item rewrote the library in typescript
+    \item improved and promisified the store API
+    \item auto-published releases
+    \item improved the unit and integration test suites
+    \item added comprehensive documentation and tutorials
+\end{itemize}
+\vspace{0.5em}
+
+\end{adjustwidth}
+
+\vspace{1em}
+
+\cvsection{Education}
+\begin{adjustwidth}{2em}{0em}
+
+\education{B.Tech in CSE}{IIIT Hyderabad}{2024-28}
+\education{Standard 1-10 (ICSE)}{Wisdom World School, Pune}{2012-22}
+
+\end{adjustwidth}
+\vspace{1em}
+
+\begin{multicols}{2}
+    \cvsection{Member Of}
+    \experience{}{Student Parliament}{2024}
+    \begin{itemize}
+        \item Elected as batch representative in the first month of college.
+        \item Serving as the Academics Secretary, and on the Mess, Hostel, Health, Tech and Internal Affairs Committees. 
+    \end{itemize}
+    \experience{}{OSDG, IIIT Hyderabad}{2025}
+    \begin{itemize}
+        \item Joined the tech team of the Open Source Developers Group, planning to contribute to projects and host events.
+        \item Helped with the Introduction to Docker event, hosted by Aarnav Pai.
+    \end{itemize}
+    \columnbreak
+    \cvsection{Talks}
+    \begin{adjustwidth}{1em}{0em}
+    \textbf{2024 Pune}
+    \newline Sunbird DPG Tech Fusion Conference: My Journey Into Open Source
+    \newline \newline
+    \textbf{2024 Hyderabad}
+    \newline FOSS United Meetup: Agent Torch
+    \end{adjustwidth}
+\end{multicols}
+\vspace{1em}
+
+\begin{multicols}{2}
+    \cvsection{Open Source Projects}
+    \begin{adjustwidth}{1em}{0em}
+    \textbf{\href{https://github.com/gamemaker1/office-text-extractor}{Office Text Extractor}}
+    \newline A pure JS library to extract text from office files that parses based on mime types.
+    \newline \newline
+    \textbf{\href{https://dabbu-knowledge-platform.github.io}{Dabbu Knowledge Platform}}
+    \newline A platform that allows you to access any of your personal information (Gmail, Google Drive, OneDrive, your hard drive, etc.) as files, or as topics.
+    \newline \newline
+    \textbf{\href{https://github.com/verifiable-presentation/impl}{Verifiable Credentials and Presentation}}
+    \newline A specification and reference implementation for a plugin-based service for rendering, storing and querying verifiable credentials and presentations.
+    \newline \newline
+    \textbf{\href{https://github.com/gamemaker1/http-negotiator}{HTTP Negotiator}}
+    \newline A HTTP content negotiator written in V.
+    \newline \newline
+    \textbf{\href{https://github.com/gamemaker1/subtitle-translator}{Subtitle Translator}}
+    \newline A python script that uses Deeplator to translate subtitles in .srt files to and from six different languages. This project was one of my first open source projects, and my submission to Google Code-In in 2018.
+    \newline \newline
+    \end{adjustwidth}
+    \columnbreak
+    \cvsection{Contributions}
+    \begin{adjustwidth}{1em}{0em}
+    \href{https://github.com/search?q=involves%3Agamemaker1+org%3Asunbird-rc&type=pullrequests}{\textbf{Sunbird RC}}
+    \newline Documented the process of creating and working with registries, and created the registry-cli package to spin up a registry quickly and easily. \href{https://github.com/gamemaker1/electronic-registry-spec}{Submitted} \href{https://github.com/orgs/Sunbird-RC/discussions/98}{various} \href{https://github.com/orgs/Sunbird-RC/discussions/99}{RFCs} \href{https://github.com/orgs/Sunbird-RC/discussions/103}{to} improve the project.
+    \newline \newline
+    \href{https://github.com/refined-github/refined-github/pulls?q=author%3Agamemaker1}{\textbf{Refined GitHub}}
+    \newline Contributed to 8 popular features: useful-not-found-page, quick-comment-edit, forked-to, linkify-code, restore-file, among others.
+    \newline \newline
+    \href{https://github.com/vercel/serve/pulls?q=author%3Agamemaker1}{\textbf{Serve}}
+    \newline Refactored the library, added tests, and transitioned to ESM + Typescript.
+    \newline \newline
+    \href{https://github.com/jordansissel/fpm/pulls?q=author%3Agamemaker1}{\textbf{FPM}}
+    \newline Restructured the documentation, rewrote parts of the installation page, added a getting started page, tutorials and examples, as well as a CLI flags reference page.
+    \end{adjustwidth}
+\end{multicols}
+
+\end{document}
