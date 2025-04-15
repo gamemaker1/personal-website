@@ -251,6 +251,8 @@ window.fullscreen = (event) => {
 // call the tokenize function, and display the results near the target textarea.
 // this allows us to have multiple tokenizers running at the same time.
 window.tokenize = (event) => {
+  // take the input from the value of the textbox. this input can be of any
+  // length, and supports 10k+ words.
   const stats = tokenize(event.target.value)
 
   // format the output. each line is a category of stats, and following the

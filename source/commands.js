@@ -84,6 +84,7 @@ export const skills = () => `
   <p>
     as for my technical skills, the following is a non-exhaustive list of
     technologies and projects that i know how to use and/or have worked with.
+    i am at a fairly proficient level for all of them.
   </p>
 
   <div class="lists">
