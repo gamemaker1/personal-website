@@ -264,5 +264,7 @@ window.tokenize = (event) => {
 
   // display the output and make only the first heading bold as a stylistic touch.
   const target = event.target.nextElementSibling
-  target.innerHTML = output.replace('general', '<strong>statistics</strong>')
+  target.innerHTML = output
+    .replace('general', '<strong>statistics</strong>')
+    .replace('articles', 'indefinite articles')
 }
