@@ -236,7 +236,7 @@ export const education = () => `
 export const resume = () => `
   <p>
     you can download my resume by clicking on
-    <a href="assets/content/vedant-kulkarni-resume.pdf" download>this link</a>.
+    <a href="assets/content/vedant-kulkarni.pdf" download>this link</a>.
   </p>
 `
 
