@@ -1,6 +1,7 @@
 # <div align="center"><code>web@vedant</code></div>
 
-> [web.iiit.ac.in/~vedant.kulkarni](https://web.iiit.ac.in/~vedant.kulkarni).
+> - [web.iiit.ac.in/~vedant.kulkarni](https://web.iiit.ac.in/~vedant.kulkarni)
+> - [gamemaker1.github.io/personal-website](https://gamemaker1.github.io/personal-website)
 
 ## development
 
