@@ -248,6 +248,7 @@ export const tokenize = () => `
 
 // some commands, just for fun :)
 export const intern = () => `<3`
+export const the = (...args) => args[0] == 'intern' ? `<3` : `the isn't a valid command!`
 export const sudo = () => {
   window.open('https://youtu.be/dQw4w9WgXcQ', '_blank').focus()
   return `you are not in the sudoers file. this incident will be reported.`
